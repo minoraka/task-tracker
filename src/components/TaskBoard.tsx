@@ -1,12 +1,25 @@
-import { useTaskStore } from "../store/taskStore";
+  import TaskColumn from "./TaskColumn";
+  import { useTaskStore } from "../store/taskStore";
 
-export default function TaskBoard() {
-  const tasks = useTaskStore((state) => state.tasks);
+  export default function TaskBoard() {
+    const tasks = useTaskStore((state) => state.tasks);
 
-  return (
-    <div>
-      <h1>TASKBOARD OK</h1>
-      <pre>{JSON.stringify(tasks, null, 2)}</pre>
-    </div>
-  );
-}
+    return (
+      <div className="board">
+        <TaskColumn
+          title="To Do"
+          tasks={tasks.filter((t) => t.status === "todo")}
+        />
+
+        <TaskColumn
+          title="In Progress"
+          tasks={tasks.filter((t) => t.status === "in_progress")}
+        />
+
+        <TaskColumn
+          title="Done"
+          tasks={tasks.filter((t) => t.status === "done")}
+        />
+      </div>
+    );
+  }
