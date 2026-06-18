@@ -1,25 +1,23 @@
-  import TaskColumn from "./Column";
-  import { useTaskStore } from "../store/taskStore";
+import { mockTasks } from "../mock/tasks";
+import Column from "./Column";
 
-  export default function KanbanBoard() {
-    const tasks = useTaskStore((state) => state.tasks);
+export function KanbanBoard() {
+  return (
+    <div className="board">
+      <Column
+        title="В планах"
+        tasks={mockTasks.filter((t) => t.status === "todo")}
+      />
 
-    return (
-      <div className="board">
-        <TaskColumn
-          title="To Do"
-          tasks={tasks.filter((t) => t.status === "todo")}
-        />
+      <Column
+        title="В процессе"
+        tasks={mockTasks.filter((t) => t.status === "in_progress")}
+      />
 
-        <TaskColumn
-          title="In Progress"
-          tasks={tasks.filter((t) => t.status === "in_progress")}
-        />
-
-        <TaskColumn
-          title="Done"
-          tasks={tasks.filter((t) => t.status === "done")}
-        />
-      </div>
-    );
-  }
+      <Column
+        title="Готово"
+        tasks={mockTasks.filter((t) => t.status === "done")}
+      />
+    </div>
+  );
+}
