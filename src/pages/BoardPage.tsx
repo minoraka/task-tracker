@@ -1,5 +1,5 @@
-import TaskBoard from "../components/TaskBoard";
+import KanbanBoard from "../components/KanbanBoard";
 
 export default function BoardPage() {
-  return <TaskBoard />;
-}
+  return <KanbanBoard />;
+} 

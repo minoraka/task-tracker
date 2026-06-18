@@ -1,7 +1,7 @@
-  import TaskColumn from "./TaskColumn";
+  import TaskColumn from "./Column";
   import { useTaskStore } from "../store/taskStore";
 
-  export default function TaskBoard() {
+  export default function KanbanBoard() {
     const tasks = useTaskStore((state) => state.tasks);
 
     return (
